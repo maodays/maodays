@@ -278,6 +278,81 @@
   footer nav{display:flex;gap:22px}
   footer nav a:hover{color:var(--ink)}
 
+  /* ---------- pet tabs ---------- */
+  .pet-tabs{display:flex;gap:6px;margin-bottom:16px;padding:4px;border-radius:999px;background:rgba(58,49,38,.06);width:max-content}
+  .pet-tab{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--ink-soft);transition:background .2s,color .2s}
+  .pet-tab.active{background:#fff;color:var(--ink);box-shadow:0 4px 10px -6px rgba(58,49,38,.4)}
+  #tasklist{animation:fadein .35s}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* ---------- shared tool card ---------- */
+  .tool{border-radius:var(--r-lg);padding:26px 24px}
+  .seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+  .seg-btn{padding:8px 14px;border-radius:999px;font-size:14px;background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.9);color:var(--ink-soft);transition:background .2s,color .2s}
+  .seg-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .field{display:block;margin-bottom:14px}
+  .field span{display:block;font-size:13px;color:var(--ink-soft);margin-bottom:6px}
+  .field input{width:100%;font:inherit;font-size:16px;padding:11px 14px;border-radius:var(--r-sm);border:1px solid rgba(58,49,38,.14);background:rgba(255,255,255,.7);color:var(--ink)}
+  .field input:focus{outline:none;border-color:var(--honey);box-shadow:0 0 0 3px rgba(245,184,75,.25)}
+  .hint{margin-top:16px;font-size:13px;color:var(--ink-soft)}
+
+  /* ---------- age ---------- */
+  #agecard{max-width:420px;margin:0 auto;width:100%}
+  .age-out{margin-top:6px;padding-top:18px;border-top:1px dashed rgba(58,49,38,.12);animation:fadein .4s}
+  .age-big{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+  .age-big b{font-size:44px;font-weight:700;line-height:1}
+  .age-big small{color:var(--ink-soft)}
+  .age-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(58,49,38,.07);font-size:15px}
+  .age-row span{color:var(--ink-soft)}
+  .age-row b{font-weight:500}
+  .age-out .btn{margin-top:18px;width:100%;justify-content:center}
+  .age-empty{font-size:14px;color:var(--ink-soft);margin-top:4px}
+
+  /* ---------- cost ---------- */
+  .cost-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;margin-top:40px;align-items:start}
+  @media(max-width:860px){.cost-grid{grid-template-columns:1fr}}
+  .slider{margin-bottom:16px}
+  .slider .lab{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+  .slider .lab b{font-weight:500}
+  .slider .lab small{color:var(--ink-soft);font-weight:300;margin-left:6px}
+  .slider input[type=range]{width:100%;accent-color:var(--honey);height:28px}
+  .cost-out{text-align:center;position:sticky;top:96px}
+  @media(max-width:860px){.cost-out{position:static}}
+  .pie-wrap{position:relative;width:220px;margin:0 auto 20px}
+  .pie-wrap svg{width:100%;display:block;transform:rotate(-90deg)}
+  .pie-wrap circle{fill:none;stroke-width:34;transition:stroke-dasharray .4s,stroke-dashoffset .4s}
+  .pie-center{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;line-height:1.2}
+  .pie-center small{font-size:12px;color:var(--ink-soft)}
+  .pie-center b{font-size:22px;font-weight:700;margin-top:4px}
+  .legend{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;text-align:left;font-size:13.5px;margin-bottom:22px}
+  .legend li{display:flex;align-items:center;gap:8px}
+  .legend i{width:10px;height:10px;border-radius:3px;flex:none}
+  .legend span{flex:1;color:var(--ink-soft)}
+  .legend b{font-weight:500}
+
+  /* ---------- summary ---------- */
+  .sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;align-items:start}
+  @media(max-width:860px){.sum-grid{grid-template-columns:1fr}}
+  .sum-title{font-weight:500;margin-bottom:12px}
+  .log{list-style:none;margin-bottom:18px}
+  .log li{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid rgba(58,49,38,.07);font-size:14.5px}
+  .log .d{width:34px;color:var(--ink-soft);font-size:13px;flex:none}
+  .log li>span:nth-child(2){flex:1}
+  .log .em{font-size:18px}
+  .sum-log .btn{width:100%;justify-content:center}
+  .sum-card{opacity:.35;filter:blur(3px);transform:translateY(14px) scale(.98);transition:opacity .7s,filter .7s,transform .7s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+  .sum-card.show{opacity:1;filter:none;transform:none;pointer-events:auto}
+  .sum-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+  .sum-head b{font-size:18px}
+  .sum-head span{font-size:12px;color:var(--ink-soft)}
+  .sum-item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(58,49,38,.07);font-size:14.5px}
+  .sum-item span{color:var(--ink-soft);flex:none}
+  .sum-item b{font-weight:500;text-align:right}
+  .sum-bar{height:8px;border-radius:999px;background:rgba(58,49,38,.08);margin:14px 0 16px;overflow:hidden}
+  .sum-bar i{display:block;height:100%;width:0;border-radius:999px;background:var(--honey);transition:width 1s .3s cubic-bezier(.2,.8,.2,1)}
+  .sum-card.show .sum-bar i{width:var(--w)}
+  .sum-note{padding:12px 14px;border-radius:var(--r-sm);background:rgba(245,184,75,.16);font-size:14px;line-height:1.55}
+
   /* reveal (one orchestrated hero moment only) */
   .hero .stage,.hero h1,.hero .lede,.hero .hero-cta,.hero .hero-meta{opacity:0;animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
   .hero h1{animation-delay:.15s}.hero .lede{animation-delay:.25s}.hero .hero-cta{animation-delay:.35s}.hero .hero-meta{animation-delay:.45s}
@@ -297,7 +372,8 @@
   </a>
   <nav class="nav-links" aria-label="頁面導覽">
     <a href="#try">打卡看看</a>
-    <a href="#features">功能</a>
+    <a href="#age">年齡</a>
+    <a href="#cost">花費</a>
     <a href="#privacy">隱私</a>
     <a href="#mugi-milo">Mugi &amp; Milo</a>
   </nav>
@@ -343,11 +419,15 @@
 
       <div class="card glass" id="card">
         <div class="confetti" id="confetti" aria-hidden="true"></div>
+        <div class="pet-tabs" role="tablist" aria-label="切換毛孩">
+          <button class="pet-tab active" role="tab" aria-selected="true" data-pet="mugi"><span aria-hidden="true">🐱</span>Mugi</button>
+          <button class="pet-tab" role="tab" aria-selected="false" data-pet="milo"><span aria-hidden="true">🐶</span>Milo</button>
+        </div>
         <div class="card-head">
           <div class="who">
-            <div class="avatar" aria-hidden="true">🐱</div>
+            <div class="avatar" id="avatar" aria-hidden="true">🐱</div>
             <div>
-              <div class="name">Mugi</div>
+              <div class="name" id="petname">Mugi</div>
               <div class="date" id="today">今天</div>
             </div>
           </div>
@@ -356,13 +436,37 @@
             <span id="ringtxt">0/4</span>
           </div>
         </div>
-
-        <button class="task" data-task><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><b>早餐・主食罐</b><small>每天 08:00</small></span><span class="em" aria-hidden="true">🥣</span></button>
-        <button class="task" data-task><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><b>養氣保健品</b><small>每天 1 次</small></span><span class="em" aria-hidden="true">💊</span></button>
-        <button class="task" data-task><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><b>量體重</b><small>每週一次・上次 4.3 kg</small></span><span class="em" aria-hidden="true">⚖️</span></button>
-        <button class="task" data-task><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="t"><b>刷牙</b><small>每 2 天</small></span><span class="em" aria-hidden="true">🪥</span></button>
-
+        <div id="tasklist"></div>
         <div class="card-foot" id="foot">還有 4 項要完成</div>
+      </div>
+    </div>
+  </section>
+
+    <!-- AGE -->
+  <section id="age" aria-labelledby="h-age">
+    <div class="wrap demo">
+      <div class="glass tool" id="agecard">
+        <div class="seg" role="radiogroup" aria-label="毛孩種類">
+          <button class="seg-btn active" data-kind="cat">🐱 貓</button>
+          <button class="seg-btn" data-kind="dogS">🐶 小型犬</button>
+          <button class="seg-btn" data-kind="dogM">🐶 中型犬</button>
+          <button class="seg-btn" data-kind="dogL">🐶 大型犬</button>
+        </div>
+        <label class="field"><span>毛孩的名字</span><input id="agename" type="text" maxlength="12" placeholder="Mugi"></label>
+        <label class="field"><span>生日（或到家日）</span><input id="agebday" type="date"></label>
+        <div class="age-out" id="ageout" hidden>
+          <div class="age-big"><b id="ageyrs">4 歲</b><small id="agedet">3 個月</small></div>
+          <div class="age-row"><span>相當於人類</span><b id="agehuman">32 歲</b></div>
+          <div class="age-row"><span>距離下次生日</span><b id="agenext">128 天</b></div>
+          <button class="btn btn-dark" id="agesave" type="button">存成圖片</button>
+        </div>
+        <p class="age-empty" id="ageempty">選好種類、填上生日，就會算出來。</p>
+        <canvas id="agecanvas" width="1080" height="1350" hidden></canvas>
+      </div>
+      <div class="demo-copy">
+        <h2 id="h-age">牠幾歲了？<br>下一次生日還有幾天？</h2>
+        <p class="sub">毛日子會記住每一隻毛孩的生日和到家日，時間到了提醒你，當天還有小小的慶祝動畫。先在這裡算一次看看。</p>
+        <p class="hint">換算採常見的「第一年 15 歲、第二年 +9、之後每年 +4」，狗依體型微調。僅供參考。</p>
       </div>
     </div>
   </section>
@@ -384,6 +488,65 @@
         <div class="feat"><div class="ic" aria-hidden="true">💰</div><div><h3>花費記錄 <span class="new">1.3 新功能</span></h3><p>醫療、飼料、保健品、日用品、美容、玩具、住宿、其他八種分類，本月與今年的圓餅圖一目了然。</p></div></div>
         <div class="feat"><div class="ic" aria-hidden="true">📔</div><div><h3>生活日誌</h3><p>隨手記下與毛孩的日常點滴，附上照片與健檢報告，一起留下來。</p></div></div>
         <div class="feat"><div class="ic" aria-hidden="true">☁️</div><div><h3>備份還原</h3><p>資料可以匯出保存，換手機不遺失。紀念模式讓已經離開的毛孩，也能好好被記得。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+    <!-- COST -->
+  <section id="cost" aria-labelledby="h-cost">
+    <div class="wrap">
+      <h2 id="h-cost">你一年為毛孩花多少？</h2>
+      <p class="sub">拖一下滑桿，用你家的實際狀況估看看。這裡是估算；毛日子 1.3 的花費記錄，記的是真實的每一筆。</p>
+      <div class="cost-grid">
+        <div class="glass tool cost-inputs">
+          <div class="seg" role="radiogroup" aria-label="毛孩種類">
+            <button class="seg-btn active" data-cost="cat">🐱 貓</button>
+            <button class="seg-btn" data-cost="dogS">🐶 小型犬</button>
+            <button class="seg-btn" data-cost="dogM">🐶 中型犬</button>
+          </div>
+          <div id="costfields"></div>
+          <p class="hint">尚未包含生病、住院等突發醫療。這也是為什麼要記帳。</p>
+        </div>
+        <div class="glass tool cost-out">
+          <div class="pie-wrap">
+            <svg viewBox="0 0 200 200" id="pie" aria-hidden="true"></svg>
+            <div class="pie-center"><small>每年約</small><b id="costtotal">NT$ 0</b></div>
+          </div>
+          <ul class="legend" id="legend"></ul>
+          <a class="btn btn-dark" href="https://apps.apple.com/tw/app/id6787456331" target="_blank" rel="noopener">在毛日子記真實的數字</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summary" aria-labelledby="h-sum" style="padding-top:0">
+    <div class="wrap">
+      <h2 id="h-sum">回診前，一鍵把一週的紀錄整理好</h2>
+      <p class="sub">零散的體重、症狀、打卡，按一下就變成獸醫看得懂的摘要。下面是示範資料。</p>
+      <div class="sum-grid">
+        <div class="glass tool sum-log">
+          <div class="sum-title">Mugi・最近 7 天</div>
+          <ul class="log">
+            <li><span class="d">週一</span><span>體重 4.3 kg</span><span class="em">⚖️</span></li>
+            <li><span class="d">週二</span><span>保健品 ✓</span><span class="em">💊</span></li>
+            <li><span class="d">週三</span><span>嘔吐 1 次，毛球</span><span class="em">🤢</span></li>
+            <li><span class="d">週四</span><span>飲水 120 ml，偏少</span><span class="em">💧</span></li>
+            <li><span class="d">週五</span><span>保健品 漏掉</span><span class="em">💊</span></li>
+            <li><span class="d">週六</span><span>體重 4.2 kg</span><span class="em">⚖️</span></li>
+            <li><span class="d">週日</span><span>食慾正常，刷牙 ✓</span><span class="em">🪥</span></li>
+          </ul>
+          <button class="btn btn-dark" id="sumbtn" type="button">產生健康摘要</button>
+        </div>
+        <div class="glass tool sum-card" id="sumcard" aria-live="polite">
+          <div class="sum-head"><b>健康摘要</b><span>Mugi・示範資料</span></div>
+          <div class="sum-item"><span>體重</span><b>4.3 → 4.2 kg（−2.3%）</b></div>
+          <div class="sum-item"><span>症狀</span><b>嘔吐 1 次（週三，毛球）</b></div>
+          <div class="sum-item"><span>飲水</span><b>1 天低於平常</b></div>
+          <div class="sum-item"><span>保健品依從性</span><b>6 / 7 天（86%）</b></div>
+          <div class="sum-bar"><i style="--w:86%"></i></div>
+          <div class="sum-note">值得跟獸醫提：體重下降 + 飲水減少同時出現。</div>
+        </div>
       </div>
     </div>
   </section>
@@ -499,22 +662,34 @@
   document.getElementById('today').textContent=
     d.toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'short'});
 
-  // check-in demo
-  const tasks=[...document.querySelectorAll('[data-task]')];
+  // check-in demo (two pets)
+  const PETS={
+    mugi:{name:'Mugi',av:'🐱',tasks:[['早餐・主食罐','每天 08:00','🥣'],['養氣保健品','每天 1 次','💊'],['量體重','每週一次・上次 4.3 kg','⚖️'],['刷牙','每 2 天','🪥']],
+      msgs:['還有 4 項要完成','不錯的開始，還有 3 項','過半了，還有 2 項','最後 1 項！','今天全部完成，Mugi 很滿意 🐾']},
+    milo:{name:'Milo',av:'🐶',tasks:[['早上散步','每天 07:30','🐾'],['回家洗腳','散步後','🧼'],['每月驅蟲','本月 15 日','🪲'],['量體重','每週一次・上次 8.1 kg','⚖️']],
+      msgs:['還有 4 項要完成','不錯的開始，還有 3 項','過半了，還有 2 項','最後 1 項！','今天全部完成，Milo 尾巴搖不停 🐾']}
+  };
+  const state={mugi:[0,0,0,0],milo:[0,0,0,0]};let cur='mugi',celebrated={mugi:false,milo:false};
   const card=document.getElementById('card'),ring=document.getElementById('ringfg'),
         txt=document.getElementById('ringtxt'),foot=document.getElementById('foot'),
-        conf=document.getElementById('confetti');
-  const total=tasks.length;let celebrated=false;
-  const msgs=['還有 4 項要完成','不錯的開始，還有 3 項','過半了，還有 2 項','最後 1 項！','今天全部完成，Mugi 很滿意 🐾'];
+        conf=document.getElementById('confetti'),list=document.getElementById('tasklist');
+  const CHECK='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  function render(){
+    const p=PETS[cur];
+    document.getElementById('avatar').textContent=p.av;document.getElementById('petname').textContent=p.name;
+    list.innerHTML=p.tasks.map((t,i)=>`<button class="task${state[cur][i]?' done':''}" data-i="${i}" aria-pressed="${!!state[cur][i]}"><span class="box" aria-hidden="true">${CHECK}</span><span class="t"><b>${t[0]}</b><small>${t[1]}</small></span><span class="em" aria-hidden="true">${t[2]}</span></button>`).join('');
+    list.style.animation='none';void list.offsetWidth;list.style.animation='';
+    update();
+  }
   function update(){
-    const done=tasks.filter(t=>t.classList.contains('done')).length;
+    const arr=state[cur],total=arr.length,done=arr.filter(Boolean).length;
     ring.style.strokeDashoffset=157-157*done/total;
     txt.textContent=done+'/'+total;
     card.style.setProperty('--fill',(0.35+done/total*0.55).toFixed(2));
-    foot.textContent=msgs[done];
+    foot.textContent=PETS[cur].msgs[done];
     foot.classList.toggle('all',done===total);
-    if(done===total&&!celebrated){celebrated=true;celebrate();}
-    if(done<total)celebrated=false;
+    if(done===total&&!celebrated[cur]){celebrated[cur]=true;celebrate();}
+    if(done<total)celebrated[cur]=false;
   }
   function celebrate(){
     if(reduce)return;
@@ -529,15 +704,107 @@
     });
     setTimeout(()=>conf.innerHTML='',1300);
   }
-  tasks.forEach(t=>{
-    t.setAttribute('aria-pressed','false');
-    t.addEventListener('click',()=>{
-      t.classList.toggle('done');
-      t.setAttribute('aria-pressed',t.classList.contains('done'));
-      update();
-    });
+  list.addEventListener('click',e=>{
+    const b=e.target.closest('.task');if(!b)return;
+    const i=+b.dataset.i;state[cur][i]=state[cur][i]?0:1;
+    b.classList.toggle('done');b.setAttribute('aria-pressed',!!state[cur][i]);update();
   });
-  update();
+  document.querySelectorAll('.pet-tab').forEach(t=>t.addEventListener('click',()=>{
+    cur=t.dataset.pet;
+    document.querySelectorAll('.pet-tab').forEach(x=>{x.classList.toggle('active',x===t);x.setAttribute('aria-selected',x===t)});
+    render();
+  }));
+  render();
+
+  // ---------- age calculator ----------
+  const AGE={cat:4,dogS:4,dogM:5,dogL:6},KIND_LABEL={cat:'貓',dogS:'小型犬',dogM:'中型犬',dogL:'大型犬'};
+  let kind='cat';
+  const bday=document.getElementById('agebday'),aname=document.getElementById('agename');
+  bday.max=new Date().toISOString().slice(0,10);
+  document.querySelectorAll('[data-kind]').forEach(b=>b.addEventListener('click',()=>{
+    kind=b.dataset.kind;document.querySelectorAll('[data-kind]').forEach(x=>x.classList.toggle('active',x===b));calcAge();
+  }));
+  bday.addEventListener('input',calcAge);aname.addEventListener('input',calcAge);
+  let ageData=null;
+  function calcAge(){
+    const out=document.getElementById('ageout'),empty=document.getElementById('ageempty');
+    if(!bday.value){out.hidden=true;empty.hidden=false;ageData=null;return}
+    const b=new Date(bday.value+'T00:00:00'),now=new Date();now.setHours(0,0,0,0);
+    if(b>now){out.hidden=true;empty.hidden=false;return}
+    let yrs=now.getFullYear()-b.getFullYear(),mos=now.getMonth()-b.getMonth();
+    if(now.getDate()<b.getDate())mos--;
+    if(mos<0){yrs--;mos+=12}
+    const y=yrs+mos/12;
+    let h;
+    if(y<=1)h=15*y;else if(y<=2)h=15+9*(y-1);else h=24+AGE[kind]*(y-2);
+    h=Math.round(h);
+    let next=new Date(now.getFullYear(),b.getMonth(),b.getDate());
+    if(next<=now)next=new Date(now.getFullYear()+1,b.getMonth(),b.getDate());
+    const days=Math.round((next-now)/864e5);
+    const name=aname.value.trim()||'毛孩';
+    document.getElementById('ageyrs').textContent=yrs>0?yrs+' 歲':mos+' 個月';
+    document.getElementById('agedet').textContent=yrs>0?(mos>0?mos+' 個月':''):'';
+    document.getElementById('agehuman').textContent='約 '+h+' 歲';
+    document.getElementById('agenext').textContent=days===365||days===366?'今天！🎂':days+' 天';
+    out.hidden=false;empty.hidden=true;
+    ageData={name,yrs,mos,h,days,next,kind};
+  }
+  document.getElementById('agesave').addEventListener('click',()=>{
+    if(!ageData)return;
+    const c=document.getElementById('agecanvas'),x=c.getContext('2d'),W=c.width,H=c.height;
+    x.fillStyle='#F5EFE4';x.fillRect(0,0,W,H);
+    const g=x.createRadialGradient(W/2,H*.38,40,W/2,H*.38,420);
+    g.addColorStop(0,'#FFF3C4');g.addColorStop(.55,'#FBEBAE');g.addColorStop(1,'rgba(251,235,174,0)');
+    x.fillStyle=g;x.fillRect(0,0,W,H);
+    x.fillStyle='rgba(255,255,255,.55)';x.strokeStyle='rgba(255,255,255,.95)';x.lineWidth=4;
+    roundRect(x,120,150,W-240,H-300,64);x.fill();x.stroke();
+    x.textAlign='center';x.fillStyle='#3A3126';
+    x.font='500 44px "Noto Sans TC",sans-serif';x.fillText(ageData.name+'・'+KIND_LABEL[ageData.kind],W/2,320);
+    x.font='700 200px "Noto Sans TC",sans-serif';x.fillText(ageData.yrs>0?ageData.yrs+' 歲':ageData.mos+' 個月',W/2,600);
+    x.font='300 48px "Noto Sans TC",sans-serif';x.fillStyle='#7E7263';
+    x.fillText('相當於人類約 '+ageData.h+' 歲',W/2,720);
+    x.fillText('距離下次生日還有 '+ageData.days+' 天',W/2,800);
+    x.fillStyle='#3A3126';x.font='500 40px "Noto Sans TC",sans-serif';x.fillText('毛日子 MaoDays',W/2,H-260);
+    x.fillStyle='#7E7263';x.font='300 30px "Noto Sans TC",sans-serif';x.fillText('寵物健康紀錄・maodays.github.io/maodays',W/2,H-205);
+    const a=document.createElement('a');a.download=ageData.name+'-毛日子.png';a.href=c.toDataURL('image/png');a.click();
+  });
+  function roundRect(x,l,t,w,h,r){x.beginPath();x.moveTo(l+r,t);x.arcTo(l+w,t,l+w,t+h,r);x.arcTo(l+w,t+h,l,t+h,r);x.arcTo(l,t+h,l,t,r);x.arcTo(l,t,l+w,t,r);x.closePath()}
+
+  // ---------- cost calculator ----------
+  const COL=['#F5B84B','#F7D97A','#E9A36B','#B9C7A3','#9FB8D3','#D8A7B1','#C9BFA8'];
+  const ITEMS={
+    cat:[['飼料',1500,'每月',0,6000,100],['保健品',600,'每月',0,3000,100],['貓砂',500,'每月',0,2000,50],['驅蟲',400,'每月',0,1500,50],['美容',0,'每月',0,3000,100],['健檢',3000,'每年',0,15000,500],['疫苗',1200,'每年',0,5000,100]],
+    dogS:[['飼料',1500,'每月',0,6000,100],['保健品',600,'每月',0,3000,100],['尿布墊',500,'每月',0,2000,50],['驅蟲',400,'每月',0,1500,50],['美容',720,'每月',0,4000,60],['健檢',3000,'每年',0,15000,500],['疫苗',1200,'每年',0,5000,100]],
+    dogM:[['飼料',2500,'每月',0,8000,100],['保健品',600,'每月',0,3000,100],['尿布墊',500,'每月',0,2000,50],['驅蟲',400,'每月',0,1500,50],['美容',720,'每月',0,4000,60],['健檢',3000,'每年',0,15000,500],['疫苗',1200,'每年',0,5000,100]]
+  };
+  let ckind='cat';
+  const fields=document.getElementById('costfields');
+  function buildCost(){
+    fields.innerHTML=ITEMS[ckind].map((it,i)=>`<div class="slider"><div class="lab"><span>${it[0]}<small>${it[2]}</small></span><b id="cv${i}">NT$ ${it[1].toLocaleString()}</b></div><input type="range" data-i="${i}" min="${it[3]}" max="${it[4]}" step="${it[5]}" value="${it[1]}" aria-label="${it[0]}"></div>`).join('');
+    drawCost();
+  }
+  fields.addEventListener('input',e=>{if(e.target.type==='range'){document.getElementById('cv'+e.target.dataset.i).textContent='NT$ '+(+e.target.value).toLocaleString();drawCost()}});
+  document.querySelectorAll('[data-cost]').forEach(b=>b.addEventListener('click',()=>{
+    ckind=b.dataset.cost;document.querySelectorAll('[data-cost]').forEach(x=>x.classList.toggle('active',x===b));buildCost();
+  }));
+  function drawCost(){
+    const vals=[...fields.querySelectorAll('input')].map((r,i)=>({n:ITEMS[ckind][i][0],y:ITEMS[ckind][i][2]==='每月'?r.value*12:+r.value}));
+    const total=vals.reduce((a,v)=>a+v.y,0);
+    document.getElementById('costtotal').textContent='NT$ '+total.toLocaleString();
+    const pie=document.getElementById('pie'),C=2*Math.PI*83;let off=0,svg='';
+    vals.forEach((v,i)=>{const f=total?v.y/total:0;svg+=`<circle cx="100" cy="100" r="83" stroke="${COL[i]}" stroke-dasharray="${f*C} ${C}" stroke-dashoffset="${-off*C}"/>`;off+=f});
+    pie.innerHTML=svg;
+    document.getElementById('legend').innerHTML=vals.map((v,i)=>`<li><i style="background:${COL[i]}"></i><span>${v.n}</span><b>${total?Math.round(v.y/total*100):0}%</b></li>`).join('');
+  }
+  buildCost();
+
+  // ---------- summary demo ----------
+  const sumbtn=document.getElementById('sumbtn'),sumcard=document.getElementById('sumcard');
+  sumbtn.addEventListener('click',()=>{
+    const on=sumcard.classList.toggle('show');
+    sumbtn.textContent=on?'重看一次':'產生健康摘要';
+    if(on&&matchMedia('(max-width:860px)').matches)sumcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+  });
 })();
 </script>
 </body>
