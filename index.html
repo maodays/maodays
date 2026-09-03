@@ -21,6 +21,7 @@
 <meta name="twitter:image" content="https://maodays.github.io/maodays/assets/icon.png">
 <meta name="apple-itunes-app" content="app-id=6787456331">
 <meta name="robots" content="index,follow">
+<meta name="google-site-verification" content="O3z7OFr4FQof7rACvgKA3v3jPgD1QTfKwQttiglsv-o">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -803,9 +804,9 @@
   document.querySelectorAll('[data-kind]').forEach(b=>b.addEventListener('click',()=>{
     kind=b.dataset.kind;document.querySelectorAll('[data-kind]').forEach(x=>x.classList.toggle('active',x===b));calcAge();
   }));
-  bday.addEventListener('input',calcAge);aname.addEventListener('input',calcAge);
+  bday.addEventListener('input',()=>calcAge());aname.addEventListener('input',()=>calcAge());
   let ageData=null;
-  function calcAge(){
+  let calcAge=function(){
     const out=document.getElementById('ageout'),empty=document.getElementById('ageempty');
     if(!bday.value){out.hidden=true;empty.hidden=false;ageData=null;return}
     const b=new Date(bday.value+'T00:00:00'),now=new Date();now.setHours(0,0,0,0);
@@ -831,44 +832,53 @@
   const saveBtn=document.getElementById('agesave');
   const canShareFiles=!!(navigator.canShare&&navigator.share);
   if(canShareFiles)saveBtn.textContent='存成圖片 / 分享';
-  saveBtn.addEventListener('click',async()=>{
+  let readyFile=null,renderSeq=0;
+  const fontsReady=(document.fonts&&document.fonts.load)?Promise.all([document.fonts.load('700 200px "Noto Sans TC"'),document.fonts.load('300 48px "Noto Sans TC"'),document.fonts.load('500 44px "Noto Sans TC"')]).catch(()=>{}):Promise.resolve();
+  function drawCard(){
+    const c=document.getElementById('agecanvas'),x=c.getContext('2d'),W=c.width,H=c.height;
+    x.clearRect(0,0,W,H);
+    x.fillStyle='#F5EFE4';x.fillRect(0,0,W,H);
+    const g=x.createRadialGradient(W/2,H*.38,40,W/2,H*.38,420);
+    g.addColorStop(0,'#FFF3C4');g.addColorStop(.55,'#FBEBAE');g.addColorStop(1,'rgba(251,235,174,0)');
+    x.fillStyle=g;x.fillRect(0,0,W,H);
+    x.fillStyle='rgba(255,255,255,.55)';x.strokeStyle='rgba(255,255,255,.95)';x.lineWidth=4;
+    roundRect(x,120,150,W-240,H-300,64);x.fill();x.stroke();
+    x.textAlign='center';x.fillStyle='#3A3126';
+    x.font='500 44px "Noto Sans TC",sans-serif';x.fillText(ageData.name+'・'+KIND_LABEL[ageData.kind],W/2,320);
+    x.font='700 200px "Noto Sans TC",sans-serif';x.fillText(ageData.yrs>0?ageData.yrs+' 歲':ageData.mos+' 個月',W/2,600);
+    x.font='300 48px "Noto Sans TC",sans-serif';x.fillStyle='#7E7263';
+    x.fillText('相當於人類約 '+ageData.h+' 歲',W/2,720);
+    x.fillText('距離下次生日還有 '+ageData.days+' 天',W/2,800);
+    x.fillStyle='#3A3126';x.font='500 40px "Noto Sans TC",sans-serif';x.fillText('毛日子 MaoDays',W/2,H-260);
+    x.fillStyle='#7E7263';x.font='300 30px "Noto Sans TC",sans-serif';x.fillText('寵物健康紀錄・maodays.github.io/maodays',W/2,H-205);
+    return c;
+  }
+  // pre-render whenever the result changes, so the share call can be synchronous with the tap
+  async function prepareCard(){
+    readyFile=null;if(!ageData)return;
+    const seq=++renderSeq;
+    await fontsReady;if(seq!==renderSeq)return;
+    const c=drawCard();
+    const blob=await new Promise(r=>c.toBlob(r,'image/png'));
+    if(seq!==renderSeq||!blob)return;
+    readyFile=new File([blob],ageData.name+'-毛日子.png',{type:'image/png'});
+  }
+  const _calcAge=calcAge;
+  calcAge=function(){_calcAge();prepareCard()};
+  saveBtn.addEventListener('click',()=>{
     if(!ageData)return;
-    saveBtn.disabled=true;const label=saveBtn.textContent;saveBtn.textContent='製作中…';
-    try{
-      if(document.fonts&&document.fonts.load){await Promise.all([document.fonts.load('700 200px "Noto Sans TC"'),document.fonts.load('300 48px "Noto Sans TC"'),document.fonts.load('500 44px "Noto Sans TC"')])}
-      const c=document.getElementById('agecanvas'),x=c.getContext('2d'),W=c.width,H=c.height;
-      x.clearRect(0,0,W,H);
-      x.fillStyle='#F5EFE4';x.fillRect(0,0,W,H);
-      const g=x.createRadialGradient(W/2,H*.38,40,W/2,H*.38,420);
-      g.addColorStop(0,'#FFF3C4');g.addColorStop(.55,'#FBEBAE');g.addColorStop(1,'rgba(251,235,174,0)');
-      x.fillStyle=g;x.fillRect(0,0,W,H);
-      x.fillStyle='rgba(255,255,255,.55)';x.strokeStyle='rgba(255,255,255,.95)';x.lineWidth=4;
-      roundRect(x,120,150,W-240,H-300,64);x.fill();x.stroke();
-      x.textAlign='center';x.fillStyle='#3A3126';
-      x.font='500 44px "Noto Sans TC",sans-serif';x.fillText(ageData.name+'・'+KIND_LABEL[ageData.kind],W/2,320);
-      x.font='700 200px "Noto Sans TC",sans-serif';x.fillText(ageData.yrs>0?ageData.yrs+' 歲':ageData.mos+' 個月',W/2,600);
-      x.font='300 48px "Noto Sans TC",sans-serif';x.fillStyle='#7E7263';
-      x.fillText('相當於人類約 '+ageData.h+' 歲',W/2,720);
-      x.fillText('距離下次生日還有 '+ageData.days+' 天',W/2,800);
-      x.fillStyle='#3A3126';x.font='500 40px "Noto Sans TC",sans-serif';x.fillText('毛日子 MaoDays',W/2,H-260);
-      x.fillStyle='#7E7263';x.font='300 30px "Noto Sans TC",sans-serif';x.fillText('寵物健康紀錄・maodays.github.io/maodays',W/2,H-205);
-      const blob=await new Promise(r=>c.toBlob(r,'image/png'));
-      const fname=ageData.name+'-毛日子.png';
-      const file=new File([blob],fname,{type:'image/png'});
-      if(canShareFiles&&navigator.canShare({files:[file]})){
-        try{await navigator.share({files:[file],title:'毛日子 MaoDays'})}catch(e){if(e.name!=='AbortError')throw e}
-      }else{
-        const url=URL.createObjectURL(blob);
-        const a=document.createElement('a');a.download=fname;a.href=url;
-        if('download' in a){a.click()}else{window.open(url,'_blank')}
-        setTimeout(()=>URL.revokeObjectURL(url),10000);
-      }
-    }catch(e){
-      console.error(e);
-      saveBtn.textContent='存圖失敗，請截圖';setTimeout(()=>{saveBtn.textContent=label},2500);saveBtn.disabled=false;return;
-    }
-    saveBtn.textContent=label;saveBtn.disabled=false;
+    if(!readyFile){saveBtn.textContent='製作中，再按一次';prepareCard().then(()=>{saveBtn.textContent=canShareFiles?'存成圖片 / 分享':'存成圖片'});return}
+    const file=readyFile;
+    if(canShareFiles&&navigator.canShare({files:[file]})){
+      navigator.share({files:[file],title:'毛日子 MaoDays'}).catch(e=>{if(e.name!=='AbortError'){console.error(e);fallbackSave(file)}});
+    }else fallbackSave(file);
   });
+  function fallbackSave(file){
+    const url=URL.createObjectURL(file);
+    const a=document.createElement('a');a.download=file.name;a.href=url;
+    if('download' in a){a.click()}else{window.open(url,'_blank')}
+    setTimeout(()=>URL.revokeObjectURL(url),10000);
+  }
   function roundRect(x,l,t,w,h,r){x.beginPath();x.moveTo(l+r,t);x.arcTo(l+w,t,l+w,t+h,r);x.arcTo(l+w,t+h,l,t+h,r);x.arcTo(l,t+h,l,t,r);x.arcTo(l,t,l+w,t,r);x.closePath()}
 
   // ---------- cost calculator ----------
