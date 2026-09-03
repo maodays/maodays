@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>毛日子 MaoDays｜寵物健康紀錄 App</title>
-<meta name="description" content="毛日子 MaoDays 是一款溫暖的寵物健康記錄 App。體重、排程、日誌、花費一站搞定，所有資料只存在你的手機裡。">
+<meta name="description" content="毛日子 MaoDays 是一款溫暖的寵物健康記錄 App。體重、排程、日誌、花費一站搞定，所有資料只存在您的手機裡。">
 <meta property="og:title" content="毛日子 MaoDays｜寵物健康紀錄">
-<meta property="og:description" content="毛孩體重、排程、日誌，一站搞定。所有資料只存在你的手機裡。">
+<meta property="og:description" content="毛孩體重、排程、日誌，一站搞定。所有資料只存在您的手機裡。">
 <meta property="og:image" content="assets/icon.png">
 <link rel="icon" href="assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,13 +102,16 @@
   }
   .sun-glow{position:absolute;left:50%;bottom:-8%;width:120%;height:30%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse,rgba(251,235,174,.9),rgba(251,235,174,0) 70%);filter:blur(10px)}
   .icon-float{
-    position:absolute;left:50%;top:50%;width:46%;
+    position:absolute;left:50%;top:42%;width:42%;
     transform:translate(calc(-50% + var(--ix,0px)),calc(-50% + var(--iy,0px)));
     transition:transform .6s cubic-bezier(.2,.8,.2,1);
     filter:drop-shadow(0 30px 40px rgba(120,80,20,.28));
     animation:bob 5s ease-in-out infinite;
   }
   @keyframes bob{0%,100%{margin-top:0}50%{margin-top:-14px}}
+  .stage-name{position:absolute;left:0;right:0;top:66%;text-align:center;line-height:1.1;pointer-events:none}
+  .stage-name b{display:block;font-size:clamp(22px,6.5vw,34px);font-weight:700;letter-spacing:.06em;color:var(--ink)}
+  .stage-name span{display:block;margin-top:4px;font-size:clamp(12px,3vw,15px);letter-spacing:.14em;color:#9A7A2E}
   .slab{position:absolute;border-radius:18px 18px 8px 8px;border:1.5px solid rgba(255,255,255,.9);background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(247,222,146,.35));box-shadow:0 20px 40px -24px rgba(120,95,40,.4)}
   .slab.a{left:-14%;bottom:8%;width:26%;height:26%}
   .slab.b{right:-12%;bottom:12%;width:22%;height:32%;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(247,222,146,.6))}
@@ -127,8 +130,10 @@
   /* ---------- sections ---------- */
   section{padding:110px 0}
   @media(max-width:720px){section{padding:72px 0}}
+  h1,h2{text-wrap:balance}
   h2{font-size:clamp(26px,3.6vw,40px);font-weight:700;line-height:1.3;letter-spacing:.01em}
-  .sub{color:var(--ink-soft);font-weight:300;font-size:17px;margin-top:10px;max-width:38em}
+  .sub{color:var(--ink-soft);font-weight:300;font-size:17px;margin-top:10px;max-width:36em;text-wrap:pretty}
+  .sub,.hint,.feat p,.char .cap p,.sum-note{text-wrap:pretty}
 
   /* ---------- checkin demo ---------- */
   .demo{
@@ -278,6 +283,19 @@
   footer nav{display:flex;gap:22px}
   footer nav a:hover{color:var(--ink)}
 
+  /* ---------- about ---------- */
+  .about{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:start}
+  @media(max-width:860px){.about{grid-template-columns:1fr;gap:40px}}
+  .about-text p{color:var(--ink);font-weight:300;font-size:17px;margin-top:18px;max-width:34em}
+  .about-text p:first-of-type{margin-top:22px}
+  .stats{display:grid;gap:10px}
+  .stats div{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:baseline;padding:14px 18px;border-radius:var(--r-md);background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.7)}
+  .stats dt{font-size:26px;font-weight:700;line-height:1;white-space:nowrap}
+  .stats dd{font-size:14px;color:var(--ink-soft);font-weight:300}
+  .memorial{margin-top:22px;padding:24px 22px;border-radius:var(--r-md);background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(237,228,211,.55));border:1px solid rgba(255,255,255,.8)}
+  .memorial h3{font-size:18px;font-weight:500;margin-bottom:8px}
+  .memorial p{font-size:14.5px;color:var(--ink-soft);font-weight:300}
+
   /* ---------- pet tabs ---------- */
   .pet-tabs{display:flex;gap:6px;margin-bottom:16px;padding:4px;border-radius:999px;background:rgba(58,49,38,.06);width:max-content}
   .pet-tab{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--ink-soft);transition:background .2s,color .2s}
@@ -371,6 +389,7 @@
     <span>毛日子 <span class="latin">MaoDays</span></span>
   </a>
   <nav class="nav-links" aria-label="頁面導覽">
+    <a href="#about">關於</a>
     <a href="#try">打卡看看</a>
     <a href="#age">年齡</a>
     <a href="#cost">花費</a>
@@ -394,9 +413,10 @@
         <div class="sun-glow"></div>
         <div class="slab a"></div><div class="slab b"></div><div class="slab c"></div>
         <img class="icon-float" id="icon" src="assets/icon.png" alt="毛日子 MaoDays App 圖示：Milo 和 Mugi">
+        <div class="stage-name" aria-hidden="true"><b>毛日子</b><span class="latin">MaoDays</span></div>
       </div>
       <h1 id="h-hero">毛孩的每一天，<br>都值得好好記下來</h1>
-      <p class="lede">體重、排程、日誌、花費，一站搞定。<br>一款溫暖的寵物健康記錄 App，陪你記錄毛孩生活的每一天。</p>
+      <p class="lede">體重、排程、日誌、花費，一站搞定。<br>一款溫暖的寵物健康記錄 App，陪您記錄毛孩生活的每一天。</p>
       <div class="hero-cta">
         <a class="btn btn-dark" href="https://apps.apple.com/tw/app/id6787456331" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.45 2.2-1.22 3.02-.83.9-2.14 1.6-3.27 1.5-.14-1.1.4-2.26 1.14-3.03.84-.88 2.26-1.55 3.35-1.49zM20.6 17.1c-.55 1.27-.82 1.84-1.53 2.96-1 1.55-2.4 3.48-4.14 3.5-1.55.01-1.95-1.02-4.05-1-2.1.01-2.54 1.02-4.09 1-1.74-.02-3.07-1.76-4.07-3.31C-.06 15.9-.35 10.8 1.9 8.1c1.6-1.92 4.1-3.05 6.45-3.05 2.4 0 3.9 1.32 5.88 1.32 1.92 0 3.09-1.33 5.86-1.33 2.1 0 4.32 1.14 5.9 3.11-5.18 2.84-4.34 10.25-.4 8.95z"/></svg>
@@ -408,12 +428,35 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="h-about" style="padding-top:20px">
+    <div class="wrap about">
+      <div class="about-text">
+        <h2 id="h-about">一款把毛孩的日子<br>好好留下來的 App</h2>
+        <p>毛日子 MaoDays 是一款寵物健康記錄 App。體重、飲食、保健品、疫苗、回診、花費，還有每天的小事，都放在同一個地方。</p>
+        <p>現在的毛孩活得比以前久，十幾歲的貓狗越來越常見。陪牠們變老，代表要留意的事更多：體重慢慢往下掉、慢性病要長期用藥、回診變得頻繁。這些變化很小，一天看不出來，但幾個月的紀錄放在一起，就看得見。</p>
+        <p>毛日子不是為了讓您多做一件事，而是讓您少漏掉一件事。到期會提醒、回診前會幫您整理、換手機資料也跟著走。</p>
+      </div>
+      <div class="about-side">
+        <dl class="stats">
+          <div><dt>6 種</dt><dd>貓、狗、兔、鼠、鳥、爬蟲</dd></div>
+          <div><dt>0 筆</dt><dd>資料上傳，全部存在您的手機裡</dd></div>
+          <div><dt>2026.7</dt><dd>上線，持續更新中</dd></div>
+        </dl>
+        <div class="memorial">
+          <h3>當牠不在了，日子還在</h3>
+          <p>毛孩離開後，牠的頁面可以切換成紀念模式。紀錄會安靜下來，日誌還在：想對牠說的話，可以繼續寫下去。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CHECK-IN DEMO -->
   <section id="try" aria-labelledby="h-try">
     <div class="wrap demo">
       <div class="demo-copy">
         <h2 id="h-try">今天該吃的，<br>都有餵過了嗎？</h2>
-        <p class="sub">這是毛日子最常被打開的畫面。點一下就算完成，光圈會跟著亮起來；漏掉的項目，App 會在晚上提醒你。</p>
+        <p class="sub">這是毛日子最常被打開的畫面。點一下就算完成，光圈跟著亮起來；漏掉的，晚上會提醒您。</p>
         <p class="hint">下面這張卡可以直接點，體驗看看。</p>
       </div>
 
@@ -465,8 +508,8 @@
       </div>
       <div class="demo-copy">
         <h2 id="h-age">牠幾歲了？<br>下一次生日還有幾天？</h2>
-        <p class="sub">毛日子會記住每一隻毛孩的生日和到家日，時間到了提醒你，當天還有小小的慶祝動畫。先在這裡算一次看看。</p>
-        <p class="hint">換算採常見的「第一年 15 歲、第二年 +9、之後每年 +4」，狗依體型微調。僅供參考。</p>
+        <p class="sub">毛日子會記住每一隻毛孩的生日和到家日，時間到了提醒您，當天還有小小的慶祝動畫。</p>
+        <p class="hint">換算方式：第一年 15 歲、第二年 +9、之後每年 +4，狗依體型微調，僅供參考。</p>
       </div>
     </div>
   </section>
@@ -483,11 +526,11 @@
       </div>
       <div class="feat-list">
         <div class="feat"><div class="ic" aria-hidden="true">📈</div><div><h3>日常記錄</h3><p>體重、飲食、保健品與日常排程，飼料吃完按一下「換下一包」，還能看到平均消耗天數。</p></div></div>
-        <div class="feat"><div class="ic" aria-hidden="true">🔔</div><div><h3>到期提醒</h3><p>疫苗、用藥、美容預約時間到自動通知。生日和到家日也會提醒你，領養的毛孩一樣有紀念日。</p></div></div>
+        <div class="feat"><div class="ic" aria-hidden="true">🔔</div><div><h3>到期提醒</h3><p>疫苗、用藥、美容預約時間到自動通知。生日和到家日也會提醒您，領養的毛孩一樣有紀念日。</p></div></div>
         <div class="feat"><div class="ic" aria-hidden="true">🩺</div><div><h3>一鍵健康摘要</h3><p>回診前自動整理最近的紀錄與依從性統計，給獸醫看一眼就懂，不用翻手機找。</p></div></div>
         <div class="feat"><div class="ic" aria-hidden="true">💰</div><div><h3>花費記錄 <span class="new">1.3 新功能</span></h3><p>醫療、飼料、保健品、日用品、美容、玩具、住宿、其他八種分類，本月與今年的圓餅圖一目了然。</p></div></div>
         <div class="feat"><div class="ic" aria-hidden="true">📔</div><div><h3>生活日誌</h3><p>隨手記下與毛孩的日常點滴，附上照片與健檢報告，一起留下來。</p></div></div>
-        <div class="feat"><div class="ic" aria-hidden="true">☁️</div><div><h3>備份還原</h3><p>資料可以匯出保存，換手機不遺失。紀念模式讓已經離開的毛孩，也能好好被記得。</p></div></div>
+        <div class="feat"><div class="ic" aria-hidden="true">☁️</div><div><h3>備份還原</h3><p>資料可以匯出保存，換手機不遺失，多年的紀錄一筆都不會少。</p></div></div>
       </div>
     </div>
   </section>
@@ -495,8 +538,8 @@
     <!-- COST -->
   <section id="cost" aria-labelledby="h-cost">
     <div class="wrap">
-      <h2 id="h-cost">你一年為毛孩花多少？</h2>
-      <p class="sub">拖一下滑桿，用你家的實際狀況估看看。這裡是估算；毛日子 1.3 的花費記錄，記的是真實的每一筆。</p>
+      <h2 id="h-cost">您一年為毛孩花多少？</h2>
+      <p class="sub">拖滑桿估一下您家的狀況。真實的每一筆，交給毛日子 1.3 的花費記錄。</p>
       <div class="cost-grid">
         <div class="glass tool cost-inputs">
           <div class="seg" role="radiogroup" aria-label="毛孩種類">
@@ -555,8 +598,8 @@
   <section class="privacy" id="privacy" aria-labelledby="h-priv">
     <div class="wrap">
       <div class="lock" aria-hidden="true">🔒</div>
-      <h2 id="h-priv">和毛孩的日子，只屬於你</h2>
-      <p class="sub">所有資料只存在你的手機裡。毛日子不需要註冊帳號、沒有伺服器、不收集任何資料，App Store 隱私標籤上寫的是「不收集資料」。</p>
+      <h2 id="h-priv">和毛孩的日子，只屬於您</h2>
+      <p class="sub">所有資料只存在您的手機裡。不需要註冊帳號、沒有伺服器、不收集任何資料，App Store 隱私標籤上寫的就是「不收集資料」。</p>
       <div class="privacy-pts">
         <div>不用註冊</div><div>不上傳雲端</div><div>不追蹤行為</div><div>免費使用</div>
       </div>
@@ -567,14 +610,14 @@
   <section id="mugi-milo" aria-labelledby="h-char">
     <div class="wrap">
       <h2 id="h-char">認識 Mugi 和 Milo</h2>
-      <p class="sub">App 圖示上的兩位主角，也是毛日子健康小教室的主持人。一個講疾病，一個講生活。</p>
+      <p class="sub">App 圖示上的兩位主角，也是健康小教室主持人：Mugi 講疾病，Milo 講生活。</p>
 
       <div class="chars">
         <article class="char">
           <img src="assets/mugi.jpg" alt="Mugi，一隻戴著黃色項圈的灰白虎斑貓" loading="lazy">
           <div class="cap">
             <h3>Mugi <small>貓・疾病與健康</small></h3>
-            <p>把那些「安靜到看不出來」的毛病，講到你聽得懂。</p>
+            <p>把那些「安靜到看不出來」的毛病，講到您聽得懂。</p>
             <div class="tags"><span>慢性腎臟病</span><span>齒吸收</span><span>心臟病篩檢</span></div>
           </div>
         </article>
@@ -600,7 +643,7 @@
       </div>
       <div>
         <h2 id="h-reel">健康小教室，<br>從 Mugi 的第一集開始</h2>
-        <p class="sub">每週在 Instagram 更新短影片與圖文，內容依據獸醫公開資訊整理，方便你回家後跟自己的毛孩對照。</p>
+        <p class="sub">每週在 Instagram 更新短影片與圖文，內容依據獸醫公開資訊整理，方便您回家後跟自己的毛孩對照。</p>
         <div class="topics">
           <a class="topic" href="https://www.instagram.com/reel/DcFfyFwSjwp/" target="_blank" rel="noopener"><span class="who">Mugi 陪診室</span><b>貓咪牙痛不會喊！這 5 個吃飯小動作，可能是齒吸收</b><span class="arrow">↗</span></a>
           <a class="topic" href="https://www.instagram.com/reel/DcPvixsSbmQ/" target="_blank" rel="noopener"><span class="who">Milo 生活練習室</span><b>狗狗在家狂打滑？別只當成可愛甩尾</b><span class="arrow">↗</span></a>
@@ -805,6 +848,25 @@
     sumbtn.textContent=on?'重看一次':'產生健康摘要';
     if(on&&matchMedia('(max-width:860px)').matches)sumcard.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
   });
+  // ---------- tidy line breaks: avoid one-or-two-character last lines ----------
+  const tidyEls=[...document.querySelectorAll('.sub,.hint,.feat p,.char .cap p,.age-empty,.sum-note,.disclaimer,.about-text p,.memorial p,.stats dd')];
+  function tidy(){
+    tidyEls.forEach(e=>{
+      e.style.maxWidth='';
+      const rg=document.createRange();
+      const measure=()=>{rg.selectNodeContents(e);const rs=[...rg.getClientRects()];return {n:rs.length,last:rs.length?rs[rs.length-1].width:0,max:rs.reduce((a,r)=>Math.max(a,r.width),0)}};
+      let m=measure();if(m.n<2||m.last>=m.max*.3)return;
+      const base=e.getBoundingClientRect().width,lines=m.n;
+      for(let f=.98;f>=.8;f-=.02){
+        e.style.maxWidth=Math.round(base*f)+'px';
+        const t=measure();
+        if(t.n>lines){e.style.maxWidth=Math.round(base*(f+.02))+'px';break}
+        if(t.last>=t.max*.3)break;
+      }
+    });
+  }
+  document.fonts&&document.fonts.ready.then(tidy);tidy();
+  let tt;window.addEventListener('resize',()=>{clearTimeout(tt);tt=setTimeout(tidy,150)});
 })();
 </script>
 </body>
