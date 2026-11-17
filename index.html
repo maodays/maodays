@@ -163,7 +163,7 @@
     margin-bottom:14px;
   }
   .hero p.lede{font-size:clamp(16px,2vw,19px);color:var(--ink-soft);font-weight:300;margin-bottom:30px}
-  .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .hero-cta{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
   .hero-meta{margin-top:26px;font-size:13px;color:var(--ink-soft)}
   .hero-meta b{font-weight:500;color:var(--ink)}
   .stars{color:var(--honey);letter-spacing:2px}
@@ -328,6 +328,9 @@
   .final img{width:96px;height:96px;border-radius:26px;margin:0 auto 22px;box-shadow:0 24px 40px -20px rgba(120,80,20,.45)}
   .final .btn-appicon{width:28px;height:28px;margin:0;border-radius:7px;box-shadow:none}
   .final .hero-cta{margin-top:26px}
+  .appstore-badge{display:inline-flex;align-items:center;line-height:0;flex:none}
+  .appstore-badge img{display:block;height:40px;width:auto;max-width:none;aspect-ratio:108.85157/40;margin:0;border-radius:0;box-shadow:none;background:transparent}
+  .hero .appstore-badge img,.final .appstore-badge img{height:52px;width:auto}
 
   /* ---------- footer ---------- */
   footer{padding:36px 0 44px;border-top:1px solid rgba(58,49,38,.08);font-size:13.5px;color:var(--ink-soft)}
@@ -447,11 +450,7 @@
     <a href="#privacy">隱私</a>
     <a href="#mugi-milo">Mugi &amp; Milo</a>
   </nav>
-  <a class="btn btn-dark" href="https://apps.apple.com/tw/app/id6787456331" target="_blank" rel="noopener">
-    <img class="btn-appicon" src="assets/icon.png" width="22" height="22" alt="">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.45 2.2-1.22 3.02-.83.9-2.14 1.6-3.27 1.5-.14-1.1.4-2.26 1.14-3.03.84-.88 2.26-1.55 3.35-1.49zM20.6 17.1c-.55 1.27-.82 1.84-1.53 2.96-1 1.55-2.4 3.48-4.14 3.5-1.55.01-1.95-1.02-4.05-1-2.1.01-2.54 1.02-4.09 1-1.74-.02-3.07-1.76-4.07-3.31C-.06 15.9-.35 10.8 1.9 8.1c1.6-1.92 4.1-3.05 6.45-3.05 2.4 0 3.9 1.32 5.88 1.32 1.92 0 3.09-1.33 5.86-1.33 2.1 0 4.32 1.14 5.9 3.11-5.18 2.84-4.34 10.25-.4 8.95z"/></svg>
-    App Store
-  </a>
+  <a class="appstore-badge" href="https://apps.apple.com/tw/app/id6787456331" target="_blank" rel="noopener"><img src="assets/badges/app-store-zh-tw.svg" alt="在 App Store 下載 MaoDays 毛日子" height="40"></a>
 </header>
 
 <main id="top">
@@ -470,11 +469,7 @@
       <h1 id="h-hero">毛孩的每一天，<br>都值得好好記下來</h1>
       <p class="lede">體重、排程、日誌、花費，一站搞定。<br>一款溫暖的寵物健康記錄 App，陪您記錄毛孩生活的每一天。</p>
       <div class="hero-cta">
-        <a class="btn btn-dark" href="https://apps.apple.com/tw/app/id6787456331" target="_blank" rel="noopener">
-          <img class="btn-appicon" src="assets/icon.png" width="28" height="28" alt="">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.45 2.2-1.22 3.02-.83.9-2.14 1.6-3.27 1.5-.14-1.1.4-2.26 1.14-3.03.84-.88 2.26-1.55 3.35-1.49zM20.6 17.1c-.55 1.27-.82 1.84-1.53 2.96-1 1.55-2.4 3.48-4.14 3.5-1.55.01-1.95-1.02-4.05-1-2.1.01-2.54 1.02-4.09 1-1.74-.02-3.07-1.76-4.07-3.31C-.06 15.9-.35 10.8 1.9 8.1c1.6-1.92 4.1-3.05 6.45-3.05 2.4 0 3.9 1.32 5.88 1.32 1.92 0 3.09-1.33 5.86-1.33 2.1 0 4.32 1.14 5.9 3.11-5.18 2.84-4.34 10.25-.4 8.95z"/></svg>
-          免費下載 MaoDays 毛日子（iPhone）
-        </a>
+        <a class="appstore-badge" href="https://apps.apple.com/tw/app/id6787456331" target="_blank" rel="noopener"><img src="assets/badges/app-store-zh-tw.svg" alt="在 App Store 下載 MaoDays 毛日子" height="52"></a>
         <a class="btn btn-glass" href="#try">先打個卡試試</a>
       </div>
       <p class="icon-ident"><img src="assets/icon.png" width="36" height="36" alt="MaoDays 毛日子 App 圖示">MaoDays 毛日子</p>
@@ -731,7 +726,7 @@
       <h2 id="h-final">從今天開始，記下毛孩的日子</h2>
       <p class="sub" style="margin-left:auto;margin-right:auto">免費、不用註冊，下載就能用。</p>
       <div class="hero-cta">
-        <a class="btn btn-dark" href="https://apps.apple.com/tw/app/id6787456331" target="_blank" rel="noopener"><img class="btn-appicon" src="assets/icon.png" width="28" height="28" alt="">免費下載 MaoDays 毛日子（iPhone）</a>
+        <a class="appstore-badge" href="https://apps.apple.com/tw/app/id6787456331" target="_blank" rel="noopener"><img src="assets/badges/app-store-zh-tw.svg" alt="在 App Store 下載 MaoDays 毛日子" height="52"></a>
         <a class="btn btn-glass" href="https://www.instagram.com/maodays.app" target="_blank" rel="noopener">Instagram @maodays.app</a>
         <a class="btn btn-glass" href="https://www.tiktok.com/@maodays.app" target="_blank" rel="noopener">TikTok @maodays.app</a>
       </div>
