@@ -303,13 +303,14 @@
   .reel{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
   @media(max-width:860px){.reel{grid-template-columns:1fr;gap:36px}}
   .reel-frame{
-    max-width:360px;margin:0 auto;width:100%;
+    position:relative;overflow:hidden;max-width:360px;margin:0 auto;width:100%;
     border-radius:36px;padding:10px;
     background:linear-gradient(160deg,rgba(255,255,255,.75),rgba(255,255,255,.3));
     border:1.5px solid rgba(255,255,255,.95);
     box-shadow:0 0 0 1px rgba(200,185,150,.25),0 40px 80px -40px rgba(120,95,40,.45),0 0 90px 10px rgba(251,235,174,.5);
   }
-  .reel-frame .instagram-media{margin:0 !important;min-width:0 !important;min-height:540px;border-radius:26px !important;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,#FFF3C4 0%,var(--glow) 32%,#fff 33%) !important}
+  .reel-frame .instagram-media{position:static !important;width:100% !important;max-width:100% !important;margin:0 !important;min-width:0 !important;min-height:540px;border-radius:26px !important;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,#FFF3C4 0%,var(--glow) 32%,#fff 33%) !important}
+  .reel-frame .instagram-media-registered{display:none !important}
   .topics{display:flex;flex-direction:column;gap:10px;margin-top:26px}
   .topic{
     display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--r-sm);
