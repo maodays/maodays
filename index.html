@@ -95,16 +95,23 @@
   /* ---------- nav ---------- */
   .nav{
     position:sticky;top:0;z-index:50;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 24px;max-width:var(--max);margin:0 auto;
+    display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+    align-items:center;column-gap:24px;
+    width:100%;height:66px;margin:0;
+    padding:0 max(24px, calc((100% - var(--max)) / 2 + 24px));
   }
-  .nav::before{content:"";position:absolute;left:0;right:0;top:0;height:100%;background:rgba(245,239,228,.75);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);z-index:-1;-webkit-mask:linear-gradient(#000 60%,transparent);mask:linear-gradient(#000 60%,transparent)}
-  .brand{display:flex;align-items:center;gap:10px}
-  .brand img{width:38px;height:38px;border-radius:10px;box-shadow:0 4px 12px -4px rgba(120,95,40,.4)}
-  .brand span{font-weight:500;letter-spacing:.02em}
-  .nav-links{display:flex;gap:26px;font-size:14px;color:var(--ink-soft)}
+  .nav::before{content:"";position:absolute;inset:0;background:rgba(245,239,228,.82);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid rgba(58,49,38,.08);z-index:-1}
+  .brand{display:flex;align-items:center;gap:10px;justify-self:start;min-width:0}
+  .brand img{width:38px;height:38px;border-radius:10px;box-shadow:0 4px 12px -4px rgba(120,95,40,.4);flex:none}
+  .brand span{font-weight:500;letter-spacing:.02em;line-height:1;white-space:nowrap}
+  .nav-links{display:flex;align-items:center;justify-content:center;gap:26px;font-size:14px;line-height:1;color:var(--ink-soft);justify-self:center}
+  .nav-links a{display:inline-flex;align-items:center}
   .nav-links a:hover{color:var(--ink)}
-  @media(max-width:720px){.nav-links{display:none}}
+  .nav > .appstore-badge{justify-self:end}
+  @media(max-width:720px){
+    .nav{grid-template-columns:minmax(0,1fr) auto;column-gap:12px;height:64px}
+    .nav-links{display:none}
+  }
 
   .btn{
     display:inline-flex;align-items:center;gap:8px;
@@ -116,7 +123,7 @@
   .btn-dark:hover{box-shadow:0 16px 30px -12px rgba(58,49,38,.7)}
   .btn-glass{background:var(--glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--glass-edge)}
   .btn svg{width:18px;height:18px}
-  .nav .btn{padding:9px 16px;font-size:14px}
+  .nav .btn{height:40px;padding:0 16px;font-size:14px}
 
   /* ---------- hero ---------- */
   .hero{
@@ -254,7 +261,7 @@
   .feat-kicker,.tool-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
   .feat-kicker{font-size:13px;font-weight:500;letter-spacing:.06em;color:var(--ink-soft)}
   .tool-badge{font-size:12px;font-weight:500;padding:3px 10px;border-radius:999px;background:rgba(58,49,38,.08);color:var(--ink-soft)}
-  .btn-appicon{width:28px;height:28px;border-radius:7px;object-fit:cover;flex:none}
+  .btn-appicon{width:28px;height:28px;border-radius:7px;object-fit:cover;flex:none;display:block}
   .nav .btn-appicon{width:22px;height:22px;border-radius:6px}
   .icon-ident{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;color:var(--ink-soft)}
   .icon-ident img{width:36px;height:36px;border-radius:10px;object-fit:cover;box-shadow:0 4px 12px -4px rgba(120,95,40,.4)}
@@ -344,10 +351,17 @@
   @media(max-width:860px){.about{grid-template-columns:1fr;gap:40px}}
   .about-text p{color:var(--ink);font-weight:300;font-size:17px;margin-top:18px;max-width:34em}
   .about-text p:first-of-type{margin-top:22px}
-  .stats{display:grid;gap:10px}
-  .stats div{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:baseline;padding:14px 18px;border-radius:var(--r-md);background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.7)}
-  .stats dt{font-size:26px;font-weight:700;line-height:1;white-space:nowrap}
-  .stats dd{font-size:14px;color:var(--ink-soft);font-weight:300}
+  .stats{display:grid;gap:14px;align-content:start}
+  .stats div{
+    display:flex;flex-direction:column;justify-content:center;gap:8px;
+    min-width:0;padding:20px 22px;border-radius:var(--r-md);
+    background:rgba(255,255,255,.42);
+    -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.85);
+    box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 24px 60px -30px rgba(120,95,40,.25);
+  }
+  .stats dt{font-size:26px;font-weight:700;line-height:1.2}
+  .stats dd{font-size:14px;color:var(--ink-soft);font-weight:300;line-height:1.6}
   .memorial{margin-top:22px;padding:24px 22px;border-radius:var(--r-md);background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(237,228,211,.55));border:1px solid rgba(255,255,255,.8)}
   .memorial h3{font-size:18px;font-weight:500;margin-bottom:8px}
   .memorial p{font-size:14.5px;color:var(--ink-soft);font-weight:300}
@@ -484,13 +498,12 @@
       <div class="about-text">
         <h2 id="h-about">一款把毛孩的日子<br>好好留下來的 App</h2>
         <p>MaoDays 毛日子 是一款寵物健康記錄 App。體重、飲食、保健品、疫苗、回診、花費，還有每天的小事，都放在同一個地方。</p>
-        <p>現在的毛孩活得比以前久，十幾歲的貓狗越來越常見。陪牠們變老，代表要留意的事更多：體重慢慢往下掉、慢性病要長期用藥、回診變得頻繁。這些變化很小，一天看不出來，但幾個月的紀錄放在一起，就看得見。</p>
+        <p>現在的毛孩跟人類一樣，有高齡化的趨勢。陪牠們變老，代表要留意的事更多：體重慢慢往下掉、慢性病要長期用藥、回診變得頻繁。這些變化很小，一天看不出來，但幾個月的紀錄放在一起，就看得見。</p>
         <p>MaoDays 毛日子不是為了讓您多做一件事，而是讓您少漏掉一件事。到期會提醒、回診前會幫您整理、換手機時用備份檔匯出、匯入，資料不遺失。</p>
       </div>
       <div class="about-side">
         <dl class="stats">
           <div><dt>6 種＋其他</dt><dd>貓、狗、兔、鼠、鳥、爬蟲，還有其他毛孩也能記</dd></div>
-          <div><dt>0 筆</dt><dd>資料上傳，全部存在您的手機裡</dd></div>
           <div><dt>2026.7</dt><dd>上線，持續更新中</dd></div>
         </dl>
       </div>
@@ -525,7 +538,7 @@
   <section class="tools-intro" aria-labelledby="h-tools" style="padding-bottom:0">
     <div class="wrap">
       <h2 id="h-tools">官網小工具／互動體驗</h2>
-      <p class="sub">以下是官網提供的互動體驗，方便您先試試看。這些畫面和工具在 App 內不提供。</p>
+      <p class="sub">以下是官網提供的互動體驗，方便您先試試看。</p>
       <p class="disclaimer">MaoDays 毛日子不提供診斷或用藥建議。這裡的示範資料只供體驗，不做醫療判讀。</p>
     </div>
   </section>
@@ -534,9 +547,9 @@
   <section id="try" aria-labelledby="h-try">
     <div class="wrap demo">
       <div class="demo-copy">
-        <p class="tool-kicker"><span class="tool-badge">官網小工具／互動體驗</span><span class="tool-badge">App 內不提供</span></p>
+        <p class="tool-kicker"><span class="tool-badge">官網小工具／互動體驗</span></p>
         <h2 id="h-try">今天該吃的，<br>都有餵過了嗎？</h2>
-        <p class="sub">這是官網互動體驗，不是 App 畫面。點一下試試看，光圈會跟著亮起來。App 內不提供這個光圈畫面。</p>
+        <p class="sub">這是官網互動體驗，不是 App 畫面。點一下試試看，光圈會跟著亮起來。</p>
         <p class="hint">下面這張卡可以直接點。App 的打卡與提醒，請看上方「App 功能介紹」。</p>
       </div>
 
@@ -587,9 +600,9 @@
         <canvas id="agecanvas" width="1080" height="1350" hidden></canvas>
       </div>
       <div class="demo-copy">
-        <p class="tool-kicker"><span class="tool-badge">官網小工具／互動體驗</span><span class="tool-badge">App 內不提供</span></p>
+        <p class="tool-kicker"><span class="tool-badge">官網小工具／互動體驗</span></p>
         <h2 id="h-age">牠幾歲了？<br>下一次生日還有幾天？</h2>
-        <p class="sub">在官網算出毛孩年紀、相當於人類幾歲，也可以把結果存成圖片。這是官網小工具，App 內不提供。</p>
+        <p class="sub">在官網算出毛孩年紀、相當於人類幾歲，也可以把結果存成圖片。這是官網小工具。</p>
         <p class="hint">換算方式：第一年 15 歲、第二年 +9、之後每年 +4，狗依體型微調，僅供參考。</p>
       </div>
     </div>
@@ -598,9 +611,9 @@
     <!-- COST -->
   <section id="cost" aria-labelledby="h-cost">
     <div class="wrap">
-        <p class="tool-kicker"><span class="tool-badge">官網小工具／互動體驗</span><span class="tool-badge">App 內不提供</span></p>
+        <p class="tool-kicker"><span class="tool-badge">官網小工具／互動體驗</span></p>
       <h2 id="h-cost">您一年為毛孩花多少？</h2>
-      <p class="sub">這是官網估算小工具，App 內不提供。拖滑桿估一下您家的狀況。真實花費請在 MaoDays 毛日子用醫療、飼料、保健品、日用品、美容、玩具、住宿、其他八種分類記下。</p>
+      <p class="sub">這是官網估算小工具。拖滑桿估一下您家的狀況。真實花費請在 MaoDays 毛日子用醫療、飼料、保健品、日用品、美容、玩具、住宿、其他八種分類記下。</p>
       <div class="cost-grid">
         <div class="glass tool cost-inputs">
           <div class="seg" role="radiogroup" aria-label="毛孩種類">
@@ -626,9 +639,9 @@
   <!-- SUMMARY -->
   <section id="summary" aria-labelledby="h-sum" style="padding-top:0">
     <div class="wrap">
-      <p class="tool-kicker"><span class="tool-badge">官網小工具／互動體驗</span><span class="tool-badge">App 內不提供</span></p>
+      <p class="tool-kicker"><span class="tool-badge">官網小工具／互動體驗</span></p>
       <h2 id="h-sum">試試看：把一週紀錄整理成一張卡片</h2>
-      <p class="sub">這是官網小工具／互動體驗，App 內不提供這個示範畫面。按一下會把左側的示範資料整理到右側。App 的「一鍵產生健康摘要」會把體重、目前飼料、保健品與排程、最近 5 則日誌整理成一段文字，方便帶去問獸醫。</p>
+      <p class="sub">這是官網小工具／互動體驗。按一下會把左側的示範資料整理到右側。App 的「一鍵產生健康摘要」會把體重、目前飼料、保健品與排程、最近 5 則日誌整理成一段文字，方便帶去問獸醫。</p>
       <div class="sum-grid">
         <div class="glass tool sum-log">
           <div class="sum-title">Mugi・最近 7 天</div>
